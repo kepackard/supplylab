@@ -1,0 +1,8 @@
+# ignore files created by macOS 
+.DS_Store
+
+# ignore VS Code editor settings
+.vscode
+
+# ignore environmental variabls such as API keys
+.env
