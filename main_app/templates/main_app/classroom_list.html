@@ -1,6 +1,15 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Hello /ᐠ｡‸｡ᐟ\ﾉ</h1>
-<h1>Don't forget to DELETE or UPDATE this path/view!!</h1>
-<h2>Does this fix it???</h2>
+<h3>Classroom List</h3>
+
+{% for classroom in object_list %}
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ classroom.school_name }}</span>
+            <p>School: {{ classroom.school_name }}</p>
+            <p>Teacher: {{ classroom.teacher_name }}</p>
+            <p>Grade: {{ classroom.grade }}</p>
+        </div>
+    </div>
+{% endfor %}
 {% endblock %}
