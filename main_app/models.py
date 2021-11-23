@@ -45,7 +45,3 @@ class Classroom(models.Model):
 
     def get_absolute_url(self):
         return reverse('classroom_detail', kwargs={'classroom_id': self.id})
-
-
-    
-
