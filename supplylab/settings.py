@@ -123,6 +123,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# redirect user after successful login
+LOGIN_REDIRECT_URL = '/classrooms/'
+# redirect user after successful logout
+LOGOUT_REDIRECT_URL = '/'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
