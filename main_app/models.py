@@ -15,7 +15,7 @@ GRADES = (
 class Wishlist(models.Model):
     item = models.CharField(max_length = 100)
     amount = models.IntegerField(max_length = 50)
-    thumbnail = models.ImageField()
+    thumbnail = models.URLField()
     notes = models.TextField(max_length = 100)
 
     def __str__(self):
