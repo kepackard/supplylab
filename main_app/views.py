@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from .models import Classroom
+from django.views.generic import ListView
 # ----- Authentication -----
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -38,9 +40,12 @@ def signup(request):
 # 1. keep (add an actual html template with content & update the view function)
 # -- or -- 
 # 2. remove & change out the LOGIN_REDIRECT_URL on settings.py to a different url
-@login_required 
-def classroom_index(request):
-    return render(request, 'classroom_index.html')
+
+class ClassroomIndex(LoginRequiredMixin, ListView):
+    model = Classroom
+    template_name = 'classroom_list.html'
+    
+
 
 
 # ========== WISHLIST Views (i.e., - associate item with classroom) ==========
