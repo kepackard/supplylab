@@ -17,7 +17,7 @@ class Classroom(models.Model):
     state = models.CharField(max_length = 100)
     district = models.CharField(max_length = 150)
     address = models.CharField(max_length = 200)
-    zipcode = models.IntegerField(max_length = 5)
+    zipcode = models.IntegerField()
     grade = models.CharField(max_length = 1, choices=GRADES, default=GRADES[0][0],)
     teacher_name = models.CharField(max_length = 100)
     teacher_email = models.EmailField(max_length = 100)
