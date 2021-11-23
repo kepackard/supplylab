@@ -7,6 +7,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     # ========== AUTHENTICATION Routes ==========
     path('classroom/', views.classroom_index, name='classroom_index'),
+    path('accounts/signup/', views.signup, name='signup'),
 
 
     # ========== CLASSROOM Routes ==========

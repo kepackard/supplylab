@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # ----- Authentication -----
 from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
-# todo - delete once no longer needed
+
+# ----->>>>> todo - delete once no longer needed <<<<< -----
 from django.http import HttpResponse
 
 
@@ -15,6 +17,20 @@ def about(request):
     return render(request, 'about.html')
 
 # ========== AUTHENTICATION Views ==========
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()      # save user to database
+            login(request, user)    # log user in
+            return redirect('classroom_index')  # redirect to classroom_index page  # todo - is this where we want a newly signed up user to be redirected to?
+        else:
+            error_message = 'Invalid sign up - please try again.'
+    form = UserCreationForm()       # reset the sign-up to a blank form if bad POST or GET request
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
+
 
 
 # ========== CLASSROOM Views ==========
@@ -23,7 +39,7 @@ def about(request):
 # -- or -- 
 # 2. remove & change out the LOGIN_REDIRECT_URL on settings.py to a different url
 def classroom_index(request):
-    return HttpResponse('<h1>Hello /ᐠ｡‸｡ᐟ\ﾉ</h1>')
+    return render(request, 'classroom_index.html')
 
 
 # ========== WISHLIST Views (i.e., - associate item with classroom) ==========
