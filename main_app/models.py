@@ -28,7 +28,7 @@ class Classroom(models.Model):
     def __str__(self):
         return f'{self.teacher_name} at {self.school_name} with an id of {self.id}'
 
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'classroom_id': self.id})
+    # def get_absolute_url(self):
+    #     return reverse('detail', kwargs={'classroom_id': self.id})
 
     
