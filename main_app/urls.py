@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
     path('classrooms/', views.ClassroomIndex.as_view(), name='classroom_list'),
+    path('classrooms/<int:classroom_id>/', views.classroom_detail, name='classroom_detail'),
 
     # ========== AUTHENTICATION Routes ==========
     path('accounts/signup/', views.signup, name='signup'),

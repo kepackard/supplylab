@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Classroom
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
+from django.contrib.auth.models import User
 # ----- Authentication -----
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -45,7 +46,15 @@ class ClassroomIndex(LoginRequiredMixin, ListView):
     model = Classroom
     template_name = 'classroom_list.html'
     
-
+    def get_queryset(self):
+        queryset = Classroom.objects.filter(user=self.request.user)
+        return queryset
+    
+@login_required
+def classroom_detail(request, classroom_id):
+    classroom = Classroom.objects.get(id=classroom_id)
+    
+    return render(request, 'main_app/classroom_detail.html', {'classroom': classroom})
 
 
 # ========== WISHLIST Views (i.e., - associate item with classroom) ==========

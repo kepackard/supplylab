@@ -124,7 +124,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # redirect user after successful login
-LOGIN_REDIRECT_URL = '/classroom/'
+LOGIN_REDIRECT_URL = '/classrooms/'
 # redirect user after successful logout
 LOGOUT_REDIRECT_URL = '/'
 
