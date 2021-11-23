@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 # ----- Authentication -----
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-
-
-# ----->>>>> todo - delete once no longer needed <<<<< -----
-from django.http import HttpResponse
+# ----- Authorization ----
+from django.contrib.auth.decorators import login_required   # for view functions
+from django.contrib.auth.mixins import LoginRequiredMixin   # for CBVs
+# ----- Models & Forms-----
 
 
 
@@ -38,6 +38,7 @@ def signup(request):
 # 1. keep (add an actual html template with content & update the view function)
 # -- or -- 
 # 2. remove & change out the LOGIN_REDIRECT_URL on settings.py to a different url
+@login_required 
 def classroom_index(request):
     return render(request, 'classroom_index.html')
 
