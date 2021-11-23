@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Classroom
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User
 # ----- Authentication -----
 from django.contrib.auth import login
@@ -9,6 +9,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required   # for view functions
 from django.contrib.auth.mixins import LoginRequiredMixin   # for CBVs
 # ----- Models & Forms-----
+from .models import Classroom
+from .forms import ClassroomForm
 
 
 
@@ -18,6 +20,7 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
+
 
 # ========== AUTHENTICATION Views ==========
 def signup(request):
@@ -56,6 +59,16 @@ def classroom_detail(request, classroom_id):
     
     return render(request, 'main_app/classroom_detail.html', {'classroom': classroom})
 
+
+class ClassroomCreate(LoginRequiredMixin, CreateView):
+    model = Classroom
+    # fields = ['school_name', 'state', 'district', 'address', 'zipcode', 'grade', 'teacher_name', 'teacher_email', 'school_url', 'notes']
+    
+    form_class = ClassroomForm
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 # ========== WISHLIST Views (i.e., - associate item with classroom) ==========
 
