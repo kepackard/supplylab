@@ -1,10 +1,6 @@
-<!-- for teachers with admin  -->
-<!-- add login wall -->
-
 {% extends 'base.html' %} {% block content %}
 
 <h3>Classroom Details</h3>
-
     <div class="card">
         <div class="card-content">
             <span class="card-title">{{ classroom.school_name }}</span>
@@ -19,8 +15,14 @@
             <p>Zipcode: {{ classroom.zipcode }}</p>
             <p>Notes: {{ classroom.notes }}</p>
         </div>
-        <div>
-            Wishlist Here
+        <div class="card-action">
+            <a href="{% url 'classroom_update' classroom.id %}">Edit</a>
+            <a class="red-text" href="{% url 'classroom_delete' classroom.id %}">Delete</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content">
+            <h2>#)(* TODO - ADD WISHLIST HERE )@(#*$&</h2>
         </div>
     </div>
 

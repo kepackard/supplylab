@@ -38,13 +38,8 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 
-
 # ========== CLASSROOM Views ==========
-# todo - added here simply to verify authentication working - either:
-# 1. keep (add an actual html template with content & update the view function)
-# -- or -- 
-# 2. remove & change out the LOGIN_REDIRECT_URL on settings.py to a different url
-
+# ----- Index -----
 class ClassroomIndex(LoginRequiredMixin, ListView):
     model = Classroom
     template_name = 'classroom_list.html'
@@ -52,23 +47,41 @@ class ClassroomIndex(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = Classroom.objects.filter(user=self.request.user)
         return queryset
-    
-@login_required
-def classroom_detail(request, classroom_id):
-    classroom = Classroom.objects.get(id=classroom_id)
-    
-    return render(request, 'main_app/classroom_detail.html', {'classroom': classroom})
 
+# ----- Detail/Show as a view function -----
+# @login_required
+# def classroom_detail(request, classroom_id):
+#     classroom = Classroom.objects.get(id=classroom_id)
+#     # --- Instance Methods ---
+#     return render(request, 'main_app/classroom_detail.html', {'classroom': classroom})
 
-class ClassroomCreate(LoginRequiredMixin, CreateView):
+# ----- Detail/Show as a CBV -----
+class ClassroomDetail(LoginRequiredMixin, DetailView):
     model = Classroom
-    # fields = ['school_name', 'state', 'district', 'address', 'zipcode', 'grade', 'teacher_name', 'teacher_email', 'school_url', 'notes']
-    
+    # --- Instance Method returns context object data for display ---
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+# ----- Create -----
+class ClassroomCreate(LoginRequiredMixin, CreateView):
+    model = Classroom 
     form_class = ClassroomForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+# ----- Update -----
+class ClassroomUpdate(LoginRequiredMixin, UpdateView):
+    model = Classroom
+    form_class = ClassroomForm
+
+# ----- Delete -----
+class ClassroomDelete(LoginRequiredMixin, DeleteView):
+    model = Classroom
+    success_url = '/classrooms/'
+
 
 # ========== WISHLIST Views (i.e., - associate item with classroom) ==========
 
