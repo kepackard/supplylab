@@ -44,4 +44,5 @@ class Classroom(models.Model):
         return f'{self.teacher_name} at {self.school_name} with an id of {self.id}'
 
     def get_absolute_url(self):
-        return reverse('classroom_detail', kwargs={'classroom_id': self.id})
+        # return reverse('classroom_detail', kwargs={'classroom_id': self.id})      # use if classroom detail is view function
+        return reverse('classroom_detail', kwargs={'pk': self.id})                  # use if classroom detail is CBV
