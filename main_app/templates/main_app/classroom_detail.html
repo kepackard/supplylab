@@ -19,8 +19,13 @@
             <p>Zipcode: {{ classroom.zipcode }}</p>
             <p>Notes: {{ classroom.notes }}</p>
         </div>
-        <div>
-            Wishlist Here
+        <div class="card-action">
+            <a href="{% url 'classroom_update' classroom.id %}">Edit</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content">
+            <h2>#)(* ADD WISHLIST HERE )@(#*$&</h2>
         </div>
     </div>
 

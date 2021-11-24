@@ -61,14 +61,18 @@ def classroom_detail(request, classroom_id):
 
 
 class ClassroomCreate(LoginRequiredMixin, CreateView):
-    model = Classroom
-    # fields = ['school_name', 'state', 'district', 'address', 'zipcode', 'grade', 'teacher_name', 'teacher_email', 'school_url', 'notes']
-    
+    model = Classroom 
     form_class = ClassroomForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+class ClassroomUpdate(LoginRequiredMixin, UpdateView):
+    model = Classroom
+    form_class = ClassroomForm
+
+
 
 # ========== WISHLIST Views (i.e., - associate item with classroom) ==========
 
