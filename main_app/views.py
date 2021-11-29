@@ -58,9 +58,11 @@ class ClassroomIndex(LoginRequiredMixin, ListView):
 # ----- Detail/Show as a CBV -----
 class ClassroomDetail(LoginRequiredMixin, DetailView):
     model = Classroom
+    form_class = ItemForm
     # --- Instance Method returns context object data for display ---
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs, item_form = ItemForm())
+        
         return context
 
 # ----- Create -----
