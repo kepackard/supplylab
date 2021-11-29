@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin   # for CBVs
 # ----- Models & Forms-----
 from .models import Classroom, Item
 from .forms import ClassroomForm, ItemForm
+from django.db.models import Q
 
 
 
@@ -116,3 +117,14 @@ class ItemUpdate(LoginRequiredMixin, UpdateView):
     model = Item
     fields = '__all__'
     success_url = '/classrooms/' # add classroom.id to take them back to specific classroom
+
+class SearchResultsView(ListView):
+    model = Classroom
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Classroom.objects.filter(
+            Q(teacher_name__icontains=query) | Q(state__icontains=query) | Q(district__icontains=query) | Q(grade__icontains=query)
+        )
+        return object_list

@@ -27,6 +27,9 @@ urlpatterns = [
     # ========== WISHLIST Routes ==========
     # ----- (associating Items to classroom)
 
+    # SEARCH
+
+    path('search/', views.SearchResultsView.as_view(), name='search_results'),
 
     # ========== DONOR Routes ==========
 ]
