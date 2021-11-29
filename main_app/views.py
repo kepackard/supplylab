@@ -101,3 +101,18 @@ def add_item(request, classroom_id):
         # print(result.errors)
     return redirect('classroom_detail', pk = classroom_id)
 
+class ItemDetail(LoginRequiredMixin, DetailView):
+    model = Item
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['classroom'] = Classroom.objects.all()
+        return context
+
+class ItemDelete(LoginRequiredMixin, DeleteView):
+    model = Item
+    success_url = '/classrooms/' # add classroom.id to take them back to specific classroom
+
+class ItemUpdate(LoginRequiredMixin, UpdateView):
+    model = Item
+    fields = '__all__'
+    success_url = '/classrooms/' # add classroom.id to take them back to specific classroom

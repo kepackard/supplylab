@@ -18,8 +18,11 @@ urlpatterns = [
     path('classrooms/<int:pk>/update/', views.ClassroomUpdate.as_view(), name='classroom_update'),
     path('classrooms/<int:pk>/delete/', views.ClassroomDelete.as_view(), name='classroom_delete'),
     path('classrooms/<int:classroom_id>/add_item/', views.add_item, name='add_item'),
+   
     # ========== ITEM Routes ==========
-
+    path('item/<int:pk>/', views.ItemDetail.as_view(), name='item_detail'),
+    path('item/<int:pk>/delete/', views.ItemDelete.as_view(), name='item_delete'),
+    path('item/<int:pk>/update/', views.ItemUpdate.as_view(), name='item_update'),
 
     # ========== WISHLIST Routes ==========
     # ----- (associating Items to classroom)
