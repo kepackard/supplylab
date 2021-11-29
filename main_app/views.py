@@ -57,7 +57,7 @@ class ClassroomIndex(LoginRequiredMixin, ListView):
 #     return render(request, 'main_app/classroom_detail.html', {'classroom': classroom})
 
 # ----- Detail/Show as a CBV -----
-class ClassroomDetail(LoginRequiredMixin, DetailView):
+class ClassroomDetail(DetailView):
     model = Classroom
     form_class = ItemForm
     # --- Instance Method returns context object data for display ---
@@ -102,7 +102,7 @@ def add_item(request, classroom_id):
         # print(result.errors)
     return redirect('classroom_detail', pk = classroom_id)
 
-class ItemDetail(LoginRequiredMixin, DetailView):
+class ItemDetail(DetailView):
     model = Item
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

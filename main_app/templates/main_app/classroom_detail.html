@@ -15,6 +15,7 @@
             <p>Zipcode: {{ classroom.zipcode }}</p>
             <p>Notes: {{ classroom.notes }}</p>
         </div>
+        {% if user.is_authenticated %}
         <div class="card-action">
             <a href="{% url 'classroom_update' classroom.id %}">Edit</a>
             <a class="red-text" href="{% url 'classroom_delete' classroom.id %}">Delete</a>
@@ -26,6 +27,7 @@
             {{ item_form.as_p }}
             <input class="btn" type="submit" value="Add Item"/>
         </form>
+        {% endif %}
     </div>
     <div class="card">
         <h1>Class Wishlist</h1>
