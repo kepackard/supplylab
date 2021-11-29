@@ -1,16 +1,12 @@
-<!-- for teachers with admin  -->
-<!-- add login wall -->
-
 {% extends 'base.html' %} {% block content %}
 
 <h3>Classroom Details</h3>
-
     <div class="card">
         <div class="card-content">
             <span class="card-title">{{ classroom.school_name }}</span>
             <p>Teacher: {{ classroom.teacher_name }}</p>
             <p>Email: {{ classroom.teacher_email }}</p>
-            <p>Grade: {{ classroom.grade }}</p>
+            <p>Grade: {{ classroom.get_grade_display }}</p>
             <p>School: {{ classroom.school_name }}</p>
             <p>Website: {{ classroom.school_url }}</p>
             <p>State: {{ classroom.state }}</p>
@@ -19,9 +15,29 @@
             <p>Zipcode: {{ classroom.zipcode }}</p>
             <p>Notes: {{ classroom.notes }}</p>
         </div>
-        <div>
-            Wishlist Here
+        <div class="card-action">
+            <a href="{% url 'classroom_update' classroom.id %}">Edit</a>
+            <a class="red-text" href="{% url 'classroom_delete' classroom.id %}">Delete</a>
         </div>
     </div>
+    <div class="col s6">
+        <form action="{% url 'add_item' classroom.id %}" method="POST">
+            {% csrf_token %}
+            {{ item_form.as_p }}
+            <input class="btn" type="submit" value="Add Item"/>
+        </form>
+    </div>
+    <div class="card">
+        <h1>Class Wishlist</h1>
+        {% for item in classroom.item_set.all %}
+        <div class="item-card">
+            <div class="item">
+                <img src="{{item.thumbnail}}" alt="{{item.name}}"/>
+                <p>Amount needed: {{item.amount}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  
 
 {% endblock %}
