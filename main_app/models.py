@@ -38,13 +38,13 @@ class Classroom(models.Model):
 
 class Item(models.Model):
     name = models.CharField(max_length = 100)
-    amount = models.IntegerField(max_length = 50)
-    thumbnail = models.URLField()
+    amount = models.IntegerField()
+    thumbnail = models.URLField(max_length = 300)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
     notes = models.TextField(max_length = 100, blank=True)
 
     def __str__(self):
-        return self.item
+        return self.name
 
     # def get_absolute_url(self):
     #     return reverse('item_detail', kwargs={'pk':self.id})

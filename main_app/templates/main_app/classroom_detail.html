@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="col s6">
-        <form action="{% url 'add_item' classroom.id %}" method="post">
+        <form action="{% url 'add_item' classroom.id %}" method="POST">
             {% csrf_token %}
             {{ item_form.as_p }}
             <input class="btn" type="submit" value="Add Item"/>
@@ -32,12 +32,12 @@
         {% for item in classroom.item_set.all %}
         <div class="item-card">
             <div class="item">
-                <a href="{% url 'item_detail' item.id %}"><img src="{{item.thumnail}}" alt="{{item.name}}"></a>
-                <p>{{item.name}}</p>
+                <img src="{{item.thumbnail}}" alt="{{item.name}}"/>
                 <p>Amount needed: {{item.amount}}</p>
             </div>
         </div>
         {% endfor %}
     </div>
+  
 
 {% endblock %}
