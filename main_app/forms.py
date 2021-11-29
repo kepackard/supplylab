@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Classroom
+from .models import Classroom, Item
 
 # ========== CLASSROOM Form ==========
 class ClassroomForm(ModelForm):
@@ -15,5 +15,15 @@ class ClassroomForm(ModelForm):
             'teacher_name', 
             'teacher_email', 
             'school_url', 
+            'notes',
+        )
+
+class ItemForm(ModelForm):
+    class Meta:
+        model = Item
+        fields = (
+            'name',
+            'amount',
+            'thumbnail',
             'notes',
         )

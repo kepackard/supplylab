@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required   # for view functions
 from django.contrib.auth.mixins import LoginRequiredMixin   # for CBVs
 # ----- Models & Forms-----
 from .models import Classroom
-from .forms import ClassroomForm
+from .forms import ClassroomForm, ItemForm
 
 
 
@@ -88,5 +88,14 @@ class ClassroomDelete(LoginRequiredMixin, DeleteView):
 
 # ========== ITEM Views ==========
 
-
+def add_item(request, pk):
+    form = ItemForm(request.POST)
+    if form.is_valid():
+        new_item = form.save(commit=False)
+        new_item.classroom_id = pk
+        new_item.save()
+    else:
+        result = form.is_valid()
+        print(result.errors)
+    return redirect('classroom_detail', classroom_id = pk)
 
