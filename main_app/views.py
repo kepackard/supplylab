@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin   # for CBVs
 # ----- Models & Forms-----
 from .models import Classroom, Item
 from .forms import ClassroomForm, ItemForm
+from django.db.models import Q
 
 
 
@@ -56,7 +57,7 @@ class ClassroomIndex(LoginRequiredMixin, ListView):
 #     return render(request, 'main_app/classroom_detail.html', {'classroom': classroom})
 
 # ----- Detail/Show as a CBV -----
-class ClassroomDetail(LoginRequiredMixin, DetailView):
+class ClassroomDetail(DetailView):
     model = Classroom
     form_class = ItemForm
     # --- Instance Method returns context object data for display ---
@@ -101,3 +102,29 @@ def add_item(request, classroom_id):
         # print(result.errors)
     return redirect('classroom_detail', pk = classroom_id)
 
+class ItemDetail(DetailView):
+    model = Item
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['classroom'] = Classroom.objects.all()
+        return context
+
+class ItemDelete(LoginRequiredMixin, DeleteView):
+    model = Item
+    success_url = '/classrooms/' # add classroom.id to take them back to specific classroom
+
+class ItemUpdate(LoginRequiredMixin, UpdateView):
+    model = Item
+    fields = '__all__'
+    success_url = '/classrooms/' # add classroom.id to take them back to specific classroom
+
+class SearchResultsView(ListView):
+    model = Classroom
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Classroom.objects.filter(
+            Q(teacher_name__icontains=query) | Q(state__icontains=query) | Q(district__icontains=query) | Q(grade__icontains=query)
+        )
+        return object_list
