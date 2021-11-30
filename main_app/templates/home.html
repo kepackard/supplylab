@@ -4,7 +4,10 @@
 
     <h1>Welcome to supplylab!</h1>
     <!-- todo - add content -->
-
+    <form action="{% url 'search_results' %}" method="get">
+        <input name="school_name" type="text" placeholder="Search by SCHOOL NAME" onkeydown="return (event.keyCode!=13);"/>
+        <input type="submit" value="Search SCHOOL" />
+    </form>
     <form action="{% url 'search_results' %}" method="get">
         <input name="state" type="text" placeholder="Search by STATE INITIALS" onkeydown="return (event.keyCode!=13);"/>
         <input type="submit" value="Search STATE" />
@@ -16,8 +19,6 @@
     <form action="{% url 'search_results' %}" method="get">
         <input name="teacher_name" type="text" placeholder="Search by TEACHER" onkeydown="return (event.keyCode!=13);"/>
         <input type="submit" value="Search TEACHER" />
-        <!-- <input name="district" type="text" placeholder="Search by DISTRICT" onkeydown="return (event.keyCode!=13);"/>
-        <input name="grade" type="text" placeholder="Search by GRADE (elementary, middle, or high)" onkeydown="return (event.keyCode!=13);"/> -->
     </form>
     <form action="{% url 'search_results' %}" method="get">
         <select name="grade" id="grade">
