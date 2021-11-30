@@ -6,7 +6,37 @@
     <!-- todo - add content -->
 
     <form action="{% url 'search_results' %}" method="get">
-        <input name="q" type="text" placeholder="Search...">
+        <input name="state" type="text" placeholder="Search by STATE INITIALS" onkeydown="return (event.keyCode!=13);"/>
+        <input type="submit" value="Search STATE" />
     </form>
+    <form action="{% url 'search_results' %}" method="get">
+        <input name="district" type="text" placeholder="Search by DISTRICT" onkeydown="return (event.keyCode!=13);"/>
+        <input type="submit" value="Search DISTRICT" />
+    </form>
+    <form action="{% url 'search_results' %}" method="get">
+        <input name="teacher_name" type="text" placeholder="Search by TEACHER" onkeydown="return (event.keyCode!=13);"/>
+        <input type="submit" value="Search TEACHER" />
+        <!-- <input name="district" type="text" placeholder="Search by DISTRICT" onkeydown="return (event.keyCode!=13);"/>
+        <input name="grade" type="text" placeholder="Search by GRADE (elementary, middle, or high)" onkeydown="return (event.keyCode!=13);"/> -->
+    </form>
+    <form action="{% url 'search_results' %}" method="get">
+        <select name="grade" id="grade">
+            <option value="K">Kindergarten Classes</option>
+            <option value="E">Elementary Schools</option>
+            <option value="M">Middle Schools</option>
+            <option value="H">High Schools</option>
+        </select>
+        <input type="submit" value="Search GRADE" />
+    </form>
+
+    <!-- Original form syntax that would be used if a single input is used to complete a complex query across multiple fields -->
+    <!-- <form action="{% url 'search_results' %}" method="get">
+        <input name="q" type="text" placeholder="Search...">
+    </form> -->
+
+    <script>
+        const selectEl = document.getElementById('grade');
+        M.FormSelect.init(selectEl);
+    </script>
 
 {% endblock %}

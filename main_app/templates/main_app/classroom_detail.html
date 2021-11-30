@@ -15,7 +15,7 @@
             <p>Zipcode: {{ classroom.zipcode }}</p>
             <p>Notes: {{ classroom.notes }}</p>
         </div>
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and user == classroom.user %}
         <div class="card-action">
             <a href="{% url 'classroom_update' classroom.id %}">Edit</a>
             <a class="red-text" href="{% url 'classroom_delete' classroom.id %}">Delete</a>
@@ -32,12 +32,12 @@
     <div class="card">
         <h1>Class Wishlist</h1>
         {% for item in classroom.item_set.all %}
-        <div class="item-card">
-            <div class="item">
-                <a href="{% url 'item_detail' item.id %}"><img src="{{item.thumbnail}}" alt="{{item.name}}"/></a>
-                <p>Amount needed: {{item.amount}}</p>
+            <div class="item-card">
+                <div class="item">
+                    <a href="{% url 'item_detail' item.id %}"><img src="{{item.thumbnail}}" alt="{{item.name}}"/></a>
+                    <p>Amount needed: {{item.amount}}</p>
+                </div>
             </div>
-        </div>
         {% endfor %}
     </div>
   
