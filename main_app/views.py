@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # ----- Authentication -----
@@ -108,24 +108,28 @@ def add_item(request, classroom_id):
 # ----- Detail/Show -----
 class ItemDetail(DetailView):
     model = Item
+    
     def get_context_data(self, **kwargs):
         context = super(ItemDetail, self).get_context_data(**kwargs)
         classroom = Item.objects.first().classroom
         context['classroom'] = classroom
         return context
+        
+
 
 # ----- Update -----
 class ItemUpdate(LoginRequiredMixin, UpdateView):
     model = Item
     fields = ['name', 'amount', 'thumbnail', 'notes']
-    success_url = '/classrooms/' # add classroom.id to take them back to specific classroom
-
+   
 # ----- Delete -----
 class ItemDelete(LoginRequiredMixin, DeleteView):
     model = Item
-    success_url = '/classrooms/' # add classroom.id to take them back to specific classroom
 
-
+    def get_success_url(self):
+        classroom = self.object.classroom
+        return reverse('classroom_detail', kwargs={'pk':classroom.id})
+    
 # ========================================
 #          SEARCH Views
 # ========================================
@@ -134,6 +138,9 @@ class SearchResultsView(ListView):
     template_name = 'search_results.html'
 
     def get_queryset(self):
+        if (self.request.GET.get('school_name') != None):
+            query = self.request.GET.get('school_name')
+            object_list = Classroom.objects.filter(Q(school_name__icontains=query))
         if (self.request.GET.get('state') != None):
             query = self.request.GET.get('state')
             object_list = Classroom.objects.filter(Q(state__icontains=query))
@@ -146,7 +153,7 @@ class SearchResultsView(ListView):
         if(self.request.GET.get('grade') != None):
             query = self.request.GET.get('grade')
             object_list = Classroom.objects.filter(Q(grade__icontains=query))
-        
+
         # Syntax for complex query with single input used to query across multiple database fields
         # query = self.request.GET.get('q')
         # object_list = Classroom.objects.filter(
