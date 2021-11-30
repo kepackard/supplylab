@@ -11,25 +11,41 @@ body{
     background-size: cover;
 }
 
-.home-form{
+.home-card{
     background-color: white;
-    padding-top: 10px;
+    padding-left: 15px;
     padding-bottom: 15px;
+    padding-right: 15px;
     border-radius: 15px;
-    padding-left: 10px;
 }
 
-.home-h1{
-    width: 54%;
+.home-title{
     text-align: center;
-    color: white;
-    border-radius: 15px;
-    padding-bottom: 10px;
-    padding-top: 6px;
 }
 
-.form-btn{
-    margin-left: 10px;
+.home-mid{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mid-card{
+    background-color: #e0f2f1;
+    padding: 10px;
+    border-radius: 15px;
+    margin-right: 30px;
+    box-shadow: 3px 3px 6px #e0e0e0 ;
+    text-align: center;
+}
+
+.home-form{
+    margin-top: 15px;
+}
+
+.home-btn{
+    background-color: #009688;
+    height: 35px;
+    border-radius: 15px;
+    color: white;
 }
 
 main{
