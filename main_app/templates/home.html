@@ -1,25 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <h1 class="home-h1 teal">Welcome to supplylab!</h1>
-    <!-- todo - add content -->
-    <div class="home-form">
+    <!-- Greeting with app name and mission -->
+    <div>
+        <h1>supplylab!</h1>
+        <h5>Bridging the arts and education supply gap.</h5>
+    </div>
+    <!-- user directions to prompt teachers to signup/register and donors to use the search -->
+    <div>
+        <div>
+            <h5>Are you a <span style="font-size: larger; color: teal;">TEACHER</span> in need of supplies?</h5>
+            <h6><a href="{% url 'signup' %}">Sign Up</a> to register your wishlist.</h6>
+        </div>
+        <div>
+            <h5>Are you a <span style="font-size: larger; color: teal;">DONOR</span> looking for a school to support?</h5>
+            <h6>Search below to find a school or class in your area.</h6>
+        </div>
+    </div>
+    <!-- Search fields -->
+    <div>
         <form action="{% url 'search_results' %}" method="get">
             <input name="school_name" type="text" placeholder="Search by SCHOOL NAME" onkeydown="return (event.keyCode!=13);"/>
-            <input class="form-btn" type="submit" value="Search SCHOOL" />
+            <input type="submit" value="Search SCHOOL" />
         </form>
         <form action="{% url 'search_results' %}" method="get">
             <input name="state" type="text" placeholder="Search by STATE INITIALS" onkeydown="return (event.keyCode!=13);"/>
-            <input class="form-btn" type="submit" value="Search STATE" />
+            <input type="submit" value="Search STATE" />
         </form>
         <form action="{% url 'search_results' %}" method="get">
             <input name="district" type="text" placeholder="Search by DISTRICT" onkeydown="return (event.keyCode!=13);"/>
-            <input class="form-btn" type="submit" value="Search DISTRICT" />
+            <input type="submit" value="Search DISTRICT" />
         </form>
         <form action="{% url 'search_results' %}" method="get">
             <input name="teacher_name" type="text" placeholder="Search by TEACHER" onkeydown="return (event.keyCode!=13);"/>
-            <input class="form-btn" type="submit" value="Search TEACHER" />
+            <input type="submit" value="Search TEACHER" />
         </form>
         <form action="{% url 'search_results' %}" method="get">
             <select name="grade" id="grade">
@@ -28,13 +42,14 @@
                 <option value="M">Middle Schools</option>
                 <option value="H">High Schools</option>
             </select>
-            <input class="form-btn" type="submit" value="Search GRADE" />
+            <input type="submit" value="Search GRADE" />
         </form>
+
+        <!-- Original form syntax that would be used if a single input is used to complete a complex query across multiple fields -->
+        <!-- <form action="{% url 'search_results' %}" method="get">
+            <input name="q" type="text" placeholder="Search...">
+        </form> -->
     </div>
-    <!-- Original form syntax that would be used if a single input is used to complete a complex query across multiple fields -->
-    <!-- <form action="{% url 'search_results' %}" method="get">
-        <input name="q" type="text" placeholder="Search...">
-    </form> -->
 
     <script>
         const selectEl = document.getElementById('grade');
