@@ -24,12 +24,6 @@ urlpatterns = [
     path('item/<int:pk>/delete/', views.ItemDelete.as_view(), name='item_delete'),
     path('item/<int:pk>/update/', views.ItemUpdate.as_view(), name='item_update'),
 
-    # ========== WISHLIST Routes ==========
-    # ----- (associating Items to classroom)
-
-    # SEARCH
-
+    # ========== DONOR/SEARCH Routes ==========
     path('search/', views.SearchResultsView.as_view(), name='search_results'),
-
-    # ========== DONOR Routes ==========
 ]
