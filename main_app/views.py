@@ -68,7 +68,6 @@ class ClassroomDetail(DetailView):
     # --- Instance Method returns context object data for display ---
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs, item_form = ItemForm())
-        
         return context
 
 # ----- Create -----
@@ -135,8 +134,22 @@ class SearchResultsView(ListView):
     template_name = 'search_results.html'
 
     def get_queryset(self):
-        query = self.request.GET.get('q')
-        object_list = Classroom.objects.filter(
-            Q(teacher_name__icontains=query) | Q(state__icontains=query) | Q(district__icontains=query) | Q(grade__icontains=query)
-        )
+        if (self.request.GET.get('state') != None):
+            query = self.request.GET.get('state')
+            object_list = Classroom.objects.filter(Q(state__icontains=query))
+        if(self.request.GET.get('district') != None):
+            query = self.request.GET.get('district')
+            object_list = Classroom.objects.filter(Q(district__icontains=query))
+        if(self.request.GET.get('teacher_name') != None):
+            query = self.request.GET.get('teacher_name')
+            object_list = Classroom.objects.filter(Q(teacher_name__icontains=query))
+        if(self.request.GET.get('grade') != None):
+            query = self.request.GET.get('grade')
+            object_list = Classroom.objects.filter(Q(grade__icontains=query))
+        
+        # Syntax for complex query with single input used to query across multiple database fields
+        # query = self.request.GET.get('q')
+        # object_list = Classroom.objects.filter(
+        #     Q(teacher_name__icontains=query) | Q(state__icontains=query) | Q(district__icontains=query) | Q(grade__icontains=query)
+        # )
         return object_list

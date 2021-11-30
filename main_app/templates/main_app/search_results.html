@@ -2,11 +2,12 @@
 
 <h3>Search Results</h3>
 
-
-
-
-
-
+{% for query in object_list %}
+    
+{% empty %}
+    <h4>No classroom matching your search parameters were found</h4>
+    <a href="{% url 'home' %}">Return Home to Search Again</a>
+{% endif %}
 
 
 {% endblock %}
