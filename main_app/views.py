@@ -117,7 +117,7 @@ class ItemDetail(DetailView):
 # ----- Update -----
 class ItemUpdate(LoginRequiredMixin, UpdateView):
     model = Item
-    fields = '__all__'
+    fields = ['name', 'amount', 'thumbnail', 'notes']
     success_url = '/classrooms/' # add classroom.id to take them back to specific classroom
 
 # ----- Delete -----
