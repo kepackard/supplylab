@@ -49,4 +49,4 @@ class Item(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('item_detail', kwargs={'pk':self.id})
+        return reverse('classroom_detail', kwargs={'pk':self.classroom.id})
