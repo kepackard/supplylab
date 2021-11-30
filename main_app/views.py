@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # ----- Authentication -----
@@ -108,24 +108,28 @@ def add_item(request, classroom_id):
 # ----- Detail/Show -----
 class ItemDetail(DetailView):
     model = Item
+    
     def get_context_data(self, **kwargs):
         context = super(ItemDetail, self).get_context_data(**kwargs)
         classroom = Item.objects.first().classroom
         context['classroom'] = classroom
         return context
+        
+
 
 # ----- Update -----
 class ItemUpdate(LoginRequiredMixin, UpdateView):
     model = Item
     fields = ['name', 'amount', 'thumbnail', 'notes']
-    success_url = '/classrooms/' # add classroom.id to take them back to specific classroom
-
+   
 # ----- Delete -----
 class ItemDelete(LoginRequiredMixin, DeleteView):
     model = Item
-    success_url = '/classrooms/' # add classroom.id to take them back to specific classroom
 
-
+    def get_success_url(self):
+        classroom = self.object.classroom
+        return reverse('classroom_detail', kwargs={'pk':classroom.id})
+    
 # ========================================
 #          SEARCH Views
 # ========================================

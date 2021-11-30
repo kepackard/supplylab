@@ -9,6 +9,7 @@ body{
     min-height: 100vh;
     background-image: url(https://goodparentingbrighterchildren.com/wp-content/uploads/2019/03/Children-drawing-PB.jpg);
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .home-card{
@@ -46,6 +47,53 @@ body{
     height: 35px;
     border-radius: 15px;
     color: white;
+}
+
+.class-list{
+    margin-top: 42px;
+    background-color: white;
+    height: 768px;
+    border-radius: 15px;
+}
+
+.list-title{
+    text-align: center;
+    padding: 15px;
+}
+
+.list-btn-div {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 15px;
+    padding-bottom: 40px;
+}
+
+.list-btn{
+    border-radius: 15px;
+}
+
+li{
+    list-style-type: none;
+}
+
+.reg-card{
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.reg-text{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.reg-table label{
+    margin-right: -60px;
+    margin-left: 15px;
+}
+
+.reg-table td{
+    padding-right: 20px;
 }
 
 main{
