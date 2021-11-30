@@ -134,6 +134,9 @@ class SearchResultsView(ListView):
     template_name = 'search_results.html'
 
     def get_queryset(self):
+        if (self.request.GET.get('school_name') != None):
+            query = self.request.GET.get('school_name')
+            object_list = Classroom.objects.filter(Q(school_name__icontains=query))
         if (self.request.GET.get('state') != None):
             query = self.request.GET.get('state')
             object_list = Classroom.objects.filter(Q(state__icontains=query))
@@ -146,7 +149,7 @@ class SearchResultsView(ListView):
         if(self.request.GET.get('grade') != None):
             query = self.request.GET.get('grade')
             object_list = Classroom.objects.filter(Q(grade__icontains=query))
-        
+
         # Syntax for complex query with single input used to query across multiple database fields
         # query = self.request.GET.get('q')
         # object_list = Classroom.objects.filter(
