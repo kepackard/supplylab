@@ -3,17 +3,16 @@ from django.db.models.fields import IntegerField, URLField
 from django.contrib.auth.models import User
 from django.urls import reverse
 
-# Create your models here.
 
+# ========================================
+#          CLASSROOM Model
+# ========================================
 GRADES = (
     ('K', 'Kindergarten'),
     ('E', 'Elementary '),
     ('M', 'Middle School'),
     ('H', 'High School'),
 )
-
-
-
 
 class Classroom(models.Model):
     school_name = models.CharField(max_length = 100)
@@ -36,6 +35,9 @@ class Classroom(models.Model):
         return reverse('classroom_detail', kwargs={'pk': self.id})                  # use if classroom detail is CBV
 
 
+# ========================================
+#          ITEM Model
+# ========================================
 class Item(models.Model):
     name = models.CharField(max_length = 100)
     amount = models.IntegerField()

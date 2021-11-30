@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3>{{ classroom.teacher_name.capitalize }}'s {{ classroom.get_grade_display }} Class </h3>
+<h3>Item Detail</h3>
+
+<div class="row">
+    <div class="card">
+        <h4>{{ item.name }}</h4>
+        <h4>Amount: {{ item.amount }}</h4>
+        <img src="{{ item.thumbnail }}" alt=" {{ item.name }}">
+        <h4>Notes: {{ item.notes }}</h4>
+        {% if user.is_authenticated and user == classroom.user %}
+            <a href="{% url 'item_delete' item.id %}">Delete</a>
+            <a href="{% url 'item_update' item.id %}">Update</a>
+        {% endif %}
+    </div>
+</div>   
+  
+
+{% endblock %}
