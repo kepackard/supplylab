@@ -1,8 +1,12 @@
 # supplylab
-Supplylab brings donors and educators together to bridge the supply gap and ensure every student and class have high quality art and school supplies. As a full-stack Django app, supplylab provides a user friendly interface where donors can search and choose schools to support while educators can register and manage their on-going supply needs. Django's extensive authentication and authorization functionality is implemented to provide security across the app ensuring data integrity and protection for users and while persisting data in the postgresSQL database.
+Supplylab brings donors and educators together to bridge the supply gap and ensure every student and class has high quality art and school supplies. 
+
+As a full-stack Django app, supplylab provides a user-friendly interface where donors can search for schools to support, while educators can register and manage their on-going supply needs. 
+
+Django's extensive authentication and authorization functionality is implemented to provide security across the app, ensuring data integrity and protection for users while persisting data in the PostgresSQL database.
 
 
-# Check out the app **[here](insert link)**
+# Check out the app **[here!](insert link)**
 
 
 # Technologies Used
@@ -17,23 +21,29 @@ Supplylab brings donors and educators together to bridge the supply gap and ensu
 
 
 # Screenshots
-TODO - add screenshots
+
+![Desktop Landing Page](https://imgur.com/ERi95G3.png)
+
+![Desktop Classroom Details](https://imgur.com/eE1pVMx.png)
 
 
 # IceBox - Future Features
-Supplylab is an ever evolving platform ready to scale alongside our users' needs. Future features will bring additional functionality forward for both educators and donors including:
-- User profiles and roles - expanded user funcationality will allow donors, individual educators, and administrators to create and manage profiles. Roles will allow each user type to access tailored site functionality such as donor records and school user groups.
-- Photo Upload - along with user profiles and roles, supplylab will offer future functionality to allow users to upload a profile picture to further personalize the user experience and help build community across user types.
-- API Integration - supplylab is seeking to integrate with an external API in future releases to increase the data available to users for inclusion in classroom profiles without requiring users to manually enter all data.
-- In-App Communication - in-app messaging funcationality will further reduce barriers by allowing donors and educators to connect directly within supplylab to discuss things such as logistics, clarify specific needs, or simply build community among regular users.
+Supplylab is an ever-evolving platform ready to scale alongside our users' needs. Future features will bring additional functionality forward for both educators and donors including:
+- User Profiles and Roles - Expanded user functionality will allow donors, individual educators, and administrators to create and manage profiles. Roles will allow each user type to access tailored site functionality, such as donor records and school user groups.
+
+- Photo Upload - Along with user profiles and roles, supplylab will offer future functionality to allow users to upload a profile picture to further personalize the user experience and help build community across user types.
+
+- API Integration - Supplylab is seeking to integrate with an external API in future releases to increase the data available to users for inclusion in classroom profiles without requiring users to manually enter all data.
+
+- In-App Communication - In-app messaging funcationality will reduce barriers by allowing donors and educators to connect directly to discuss logistics, clarify specific needs, or simply build community among regular users.
 
 
 # Planning & Production
-Interested in our planning process? Checkout our [![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)](https://trello.com/b/NSfVPUuf/seir-project-4) board to see our user stories, ERDs, Wireframes, and collaborative planning.
+Interested in our planning process? Checkout our [![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)](https://trello.com/b/NSfVPUuf/seir-project-4) board to see our user stories, ERDs, wireframes, and collaborative planning.
 
 
 # Meet the Developers
-Supplylab was built by three rockstar female developers - check us out on GitHub & connect with us LinkedIn!
+Supplylab was built by three rockstar female developers - check us out on GitHub & connect with us on LinkedIn!
 | Developer | GitHub | LinkedIn | Project Roles |
 | --------- | ------ | -------- | ------------- |
 | Ashley Swank | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&)](https://github.com/alengysia) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ashley-swank-019509213) | Database Manager, Designer, Full Stack Developer |

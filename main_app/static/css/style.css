@@ -49,6 +49,38 @@ body{
     color: white;
 }
 
+.about-app{
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.about-title{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.about, 
+.about-devs{
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+
+.signup-div{
+    background-color: white;
+    border-radius: 15px;
+}
+
+.signup-title{
+    text-align: center;
+}
+
+.signup-card{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
 .class-list{
     margin-top: 42px;
     background-color: white;
@@ -94,6 +126,62 @@ li{
 
 .reg-table td{
     padding-right: 20px;
+}
+
+.reg-btn-div{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.class-detail{
+    background-color: white;
+    border-radius: 15px;
+}
+
+.detail-title{
+    text-align: center;
+}
+
+.detail-form p{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.detail-form-btn{
+    margin-left: 15px;
+}
+
+.wish-card{
+    border-radius: 15px
+}
+
+.wish-title{
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.wishlist-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 15px;
+}
+
+.item-card{
+    width: 250px;
+    margin-left: 55px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+
+
+.wishlist-img{
+    width: 200px;
+    height: 200px;
 }
 
 main{

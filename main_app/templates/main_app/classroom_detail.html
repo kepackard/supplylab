@@ -3,46 +3,50 @@
 
 <div class="class-detail">
 
-<h3>Classroom Details</h3>
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title">{{ classroom.school_name }}</span>
-            <p>Teacher: {{ classroom.teacher_name }}</p>
-            <p>Email: {{ classroom.teacher_email }}</p>
-            <p>Grade: {{ classroom.get_grade_display }}</p>
-            <p>School: {{ classroom.school_name }}</p>
-            <p>Website: {{ classroom.school_url }}</p>
-            <p>State: {{ classroom.state }}</p>
-            <p>District: {{ classroom.district }}</p>
-            <p>Address: {{ classroom.address }}</p>
-            <p>Zipcode: {{ classroom.zipcode }}</p>
-            <p>Notes: {{ classroom.notes }}</p>
-        </div>
-        {% if user.is_authenticated and user == classroom.user %}
-        <div class="card-action">
-            <a href="{% url 'classroom_update' classroom.id %}">Edit</a>
-            <a class="red-text" href="{% url 'classroom_delete' classroom.id %}">Delete</a>
-        </div>
-    </div>
-    <div class="col s6">
-        <form action="{% url 'add_item' classroom.id %}" method="POST">
-            {% csrf_token %}
-            {{ item_form.as_p }}
-            <input class="btn" type="submit" value="Add Item"/>
-        </form>
-        {% endif %}
-    </div>
-    <div class="card">
-        <h1>Class Wishlist</h1>
-        {% for item in classroom.item_set.all %}
-            <div class="item-card">
-                <div class="item">
-                    <a href="{% url 'item_detail' item.id %}"><img src="{{item.thumbnail}}" alt="{{item.name}}"/></a>
-                    <p>Amount needed: {{item.amount}}</p>
-                </div>
+    <h3 class="detail-title">Classroom Details</h3>
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ classroom.school_name }}</span>
+                <p>Teacher: {{ classroom.teacher_name }}</p>
+                <p>Email: {{ classroom.teacher_email }}</p>
+                <p>Grade: {{ classroom.get_grade_display }}</p>
+                <p>School: {{ classroom.school_name }}</p>
+                <p>Website: {{ classroom.school_url }}</p>
+                <p>State: {{ classroom.state }}</p>
+                <p>District: {{ classroom.district }}</p>
+                <p>Address: {{ classroom.address }}</p>
+                <p>Zipcode: {{ classroom.zipcode }}</p>
+                <p>Notes: {{ classroom.notes }}</p>
             </div>
-        {% endfor %}
-    </div>
+            {% if user.is_authenticated and user == classroom.user %}
+            <div class="card-action">
+                <a href="{% url 'classroom_update' classroom.id %}">Edit</a>
+                <a class="red-text" href="{% url 'classroom_delete' classroom.id %}">Delete</a>
+            </div>
+        </div>
+        <div class="col s6">
+            <div class="detail-form">
+                <form action="{% url 'add_item' classroom.id %}" method="POST">
+                    {% csrf_token %}
+                    {{ item_form.as_p }}
+                    <input class="btn detail-form-btn" type="submit" value="Add Item"/>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+        <div class="wish-card">
+            <h1 class="wish-title">Class Wishlist</h1>
+            <div class="wishlist-card">
+            {% for item in classroom.item_set.all %}
+                <div class="item-card">
+                    <div class="item">
+                        <a href="{% url 'item_detail' item.id %}"><img class="wishlist-img" src="{{item.thumbnail}}" alt="{{item.name}}"/></a>
+                        <p>Amount needed: {{item.amount}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
 </div>
 
 
