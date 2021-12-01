@@ -1,20 +1,28 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>{{ classroom.teacher_name.capitalize }}'s {{ classroom.get_grade_display }} Class </h3>
-<h3>Item Detail</h3>
-
-<div class="row">
-    <div class="card">
-        <h4>{{ item.name }}</h4>
-        <h4>Amount: {{ item.amount }}</h4>
-        <img src="{{ item.thumbnail }}" alt=" {{ item.name }}">
-        <h4>Notes: {{ item.notes }}</h4>
-        {% if user.is_authenticated and user == classroom.user %}
-            <a href="{% url 'item_delete' item.id %}">Delete</a>
-            <a href="{% url 'item_update' item.id %}">Update</a>
-        {% endif %}
-    </div>
-</div>   
-  
-
+<div class="class-detail">
+    <h3 class="detail-title">{{ classroom.teacher_name.title }}'s {{ classroom.get_grade_display }} Class </h3>
+    <h3 class="detail-title">Item Detail</h3>
+    <div class="row">
+        <div class="card">
+            <div class="item-detail">
+                <h4>{{ item.name }}</h4>
+                <h4>Amount: {{ item.amount }}</h4>
+                <img class="item-img" src="{{ item.thumbnail }}" alt=" {{ item.name }}">
+                {% if item.notes %}
+                    <h4>Notes: {{ item.notes }}</h4>
+                {% else %}
+                    <h4>Notes: None at this time.</h4>
+                {% endif %}
+                {% if user.is_authenticated and user == classroom.user %}
+                    <div class="card-action">
+                        <a class="blue-text" href="{% url 'item_update' item.id %}">Edit</a>
+                        <a class="red-text" href="{% url 'item_delete' item.id %}">Delete</a>
+                        <a class="blue-text" href="{% url 'classroom_detail' classroom.id%}">Back to Classroom</a>
+                    </div>
+            </div>        
+            {% endif %}
+        </div>
+    </div>  
+</div>
 {% endblock %}

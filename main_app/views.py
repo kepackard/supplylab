@@ -111,7 +111,7 @@ class ItemDetail(DetailView):
     
     def get_context_data(self, **kwargs):
         context = super(ItemDetail, self).get_context_data(**kwargs)
-        classroom = Item.objects.first().classroom
+        classroom = self.object.classroom
         context['classroom'] = classroom
         return context
         

@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Delete Item</h1>
 
-  <h4>Are you sure you want to delete <span class="teal-text">{{ item.name }}</span>?</h4>
+<div class="class-detail">
+  <h1 class="detail-title">Delete Item</h1>
 
-  <form action="" method="POST">
-    {% csrf_token %}
-    <input type="submit" value="Yes - Delete!" class="btn">
-    <a href="{% url 'item_detail' object.id %}">Cancel</a>
-  </form>
-  
+  <div class="item-delete">
+    <h4>Are you sure you want to delete <span class="teal-text">{{ item.name }}</span>?</h4>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="YES - Delete!" class="btn red"/>
+      <a href="{% url 'item_detail' object.id %}" class="btn blue">Cancel</a>
+    </form>
+  </div>
+ </div> 
 {% endblock %}
