@@ -1,10 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 <div class="class-list">
-    <h3 class="list-title">Classroom List</h3>
+    {% if user.is_authenticated %}
+        <h3 class="list-title">Classroom List</h3>
+    {% else %}
+        <h3 class="list-title">Search Results</h3>
+    {% endif %}
     <div class="list-btn-div">
         {% if user.is_authenticated %}
             <li><a class="btn teal" href="{% url 'classroom_create' %}">Register a New Classroom</a></li>
-            <li><a class="btn teal" href="{% url 'home' %}">Return Home to Search All Classrooms</a></li>
+            <li><a class="btn teal" href="{% url 'home' %}">Return Home to Search For Classrooms</a></li>
         {% else %}
             <a class="btn teal" href="{% url 'home' %}">Return Home to Search Again</a>
         {% endif %}
@@ -21,7 +25,7 @@
             </div>
         </a>
     {% empty %}
-        <h4>No classrooms available</h4>
+        <h4 style="padding-left: 15px;">No classrooms found matching your search criteria.</h4>
     {% endfor %}
 </div>
 
