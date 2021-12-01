@@ -15,12 +15,14 @@
                 {{ form.as_table }}
             </table>
         </div>
-        <input type="submit" class="btn blue" value="{% if object %} Update Classroom {% else %} Add Classroom {% endif %}" >
-        {% if object %}
-            <a class="btn red" href="{% url 'classroom_detail' classroom.id %}">Cancel</a>
-        {% else %}
-            <a class="btn red" href="{% url 'classroom_list' %}">Cancel</a>
-        {% endif %}
+        <div class="reg-btn-div">
+            <input type="submit" class="btn blue" value="{% if object %} Update Classroom {% else %} Add Classroom {% endif %}" >
+            {% if object %}
+                <a class="btn red" href="{% url 'classroom_detail' classroom.id %}">Cancel</a>
+            {% else %}
+                <a class="btn red" href="{% url 'classroom_list' %}">Cancel</a>
+            {% endif %}
+        </div>
 
 </form>
 </div>
