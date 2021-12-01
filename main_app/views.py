@@ -34,7 +34,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()      # save user to database
             login(request, user)    # log user in
-            return redirect('classroom_index')  # redirect to classroom_index page  # todo - is this where we want a newly signed up user to be redirected to?
+            return redirect('classroom_list')  
         else:
             error_message = 'Invalid sign up - please try again.'
     form = UserCreationForm()       # reset the sign-up to a blank form if bad POST or GET request

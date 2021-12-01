@@ -1,26 +1,29 @@
 {% extends 'base.html' %} {% block content %}
-
-{% if object %}
-    <h1>Edit <span class="teal-text">{{ object.school_name }}</span></h1>
-{% else %}
-    <h1>Register New Classroom</h1>
-{% endif %}
-
-<form action="" method="POST">
-    {% csrf_token %}
-    <!-- if you want to style the form just wrap the {{ form.as_table }} in a <table></table> tag; otherwise if you just use {{ form.as_table }} it will be the default django display -->
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" class="btn blue" value="{% if object %} Update Classroom {% else %} Add Classroom {% endif %}" >
-    {% if object %}
-        <a class="btn red" href="{% url 'classroom_detail' classroom.id %}">Cancel</a>
-    {% else %}
-        <a class="btn red" href="{% url 'classroom_list' %}">Cancel</a>
-    {% endif %}
+<div class="reg-card">
+    <div class="reg-text">
+        {% if object %}
+            <h1>Edit <span class="teal-text">{{ object.school_name }}</span></h1>
+        {% else %}
+            <h1>Register New Classroom</h1>
+        {% endif %}
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <!-- if you want to style the form just wrap the {{ form.as_table }} in a <table></table> tag; otherwise if you just use {{ form.as_table }} it will be the default django display -->
+        <div class="reg-table">
+            <table>
+                {{ form.as_table }}
+            </table>
+        </div>
+        <input type="submit" class="btn blue" value="{% if object %} Update Classroom {% else %} Add Classroom {% endif %}" >
+        {% if object %}
+            <a class="btn red" href="{% url 'classroom_detail' classroom.id %}">Cancel</a>
+        {% else %}
+            <a class="btn red" href="{% url 'classroom_list' %}">Cancel</a>
+        {% endif %}
 
 </form>
-
+</div>
 <script>
     const selectEl = document.getElementById('id_grade');
     M.FormSelect.init(selectEl);
