@@ -38,7 +38,7 @@
         </div>
         <div class="col s6">
             <div class="detail-form">
-                <h4 style="padding-left: 15px;">Add to Wishlist</h4>
+                <h4 class="detail-title" style="padding-left: 15px;">Add to Wishlist</h4>
                 <form action="{% url 'add_item' classroom.id %}" method="POST">
                     {% csrf_token %}
                     {{ item_form.as_p }}
@@ -48,17 +48,21 @@
             {% endif %}
         </div>
         <div class="wish-card">
-            <h1 class="wish-title">Class Wishlist</h1>
+            <h3 class="wish-title">Class Wishlist</h3>
+            {% if classroom.item_set.count %}
             <div class="wishlist-card">
             {% for item in classroom.item_set.all %}
-                <div class="item-card">
-                    <div class="item">
-                        <a href="{% url 'item_detail' item.id %}"><img class="wishlist-img" src="{{item.thumbnail}}" alt="{{item.name}}"/></a>
-                        <p>Amount needed: {{item.amount}}</p>
-                    </div>
-                </div>
-                {% endfor %}
+                        <div class="item-card">
+                            <div class="item">
+                                <a href="{% url 'item_detail' item.id %}"><img class="wishlist-img" src="{{item.thumbnail}}" alt="{{item.name}}"/></a>
+                                <p>Amount needed: {{item.amount}}</p>
+                            </div>
+                        </div>
+            {% endfor %}
             </div>
+            {% else %}
+                <h4 class="no-wishlist">No wishlist items. Please add an item.</h4>
+            {% endif %}
         </div>
 </div>
 

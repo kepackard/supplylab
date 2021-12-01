@@ -2,11 +2,13 @@
 
 <div class="class-detail">
     <h1 class="detail-title">Delete Classroom</h1>
-    <h4>Are you sure want to delete <span class="teal-text">{{ object.teacher_name.title }}'s </span><span class="purple-text">{{ object.school_name }}</span> classroom?</h4>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="YES - Delete!" class="btn red" />
-        <a href="{% url 'classroom_detail' object.id %}" class="btn blue">Cancel</a>
-    </form>
+    <div class="class-delete">
+        <h4>Are you sure want to delete <span class="teal-text">{{ object.teacher_name.title }}'s </span><span class="purple-text">{{ object.school_name }}</span> classroom?</h4>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="YES - Delete!" class="btn red" />
+            <a href="{% url 'classroom_detail' object.id %}" class="btn blue">Cancel</a>
+        </form>
+    </div>
 </div>
 {% endblock %}

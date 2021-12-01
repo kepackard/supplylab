@@ -20,7 +20,11 @@ body{
     border-radius: 15px;
 }
 
-.home-title{
+.home-title, 
+.signup-title, 
+.detail-title, 
+.no-results, 
+.no-wishlist {
     text-align: center;
 }
 
@@ -71,11 +75,11 @@ body{
     border-radius: 15px;
 }
 
-.signup-title{
-    text-align: center;
-}
-
-.signup-card{
+.signup-card, 
+.login-form, 
+.update-item, 
+.item-delete, 
+.class-delete {
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
@@ -84,8 +88,8 @@ body{
 .class-list{
     margin-top: 42px;
     background-color: white;
-    height: 768px;
     border-radius: 15px;
+    padding-bottom: 5px;
 }
 
 .list-title{
@@ -140,11 +144,7 @@ li{
     border-radius: 15px;
 }
 
-.detail-title{
-    text-align: center;
-}
-
-.detail-form p{
+.detail-form p {
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -205,16 +205,24 @@ footer{
     text-align: right;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1350px) {
     .wishlist-card{
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        /* width: 100%; */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        /* flex-wrap: wrap;
+        justify-content: center; */
     }
 
     .item-card {
         width: 50%;
         gap: 25px;
     }
+}
+
+.about-links {
+    width: 100px;
+    display: flex;
+    justify-content: space-around;
 }
