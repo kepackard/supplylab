@@ -21,7 +21,10 @@ Django's extensive authentication and authorization functionality is implemented
 
 
 # Screenshots
-TODO - add screenshots
+
+![Desktop Landing Page](https://imgur.com/ERi95G3.png)
+
+![Desktop Classroom Details](https://imgur.com/eE1pVMx.png)
 
 
 # IceBox - Future Features
