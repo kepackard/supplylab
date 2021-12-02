@@ -128,6 +128,8 @@ LOGIN_REDIRECT_URL = '/classrooms/'
 # redirect user after successful logout
 LOGOUT_REDIRECT_URL = '/'
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/main_app/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
