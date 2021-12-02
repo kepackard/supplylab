@@ -1,0 +1,228 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url(https://goodparentingbrighterchildren.com/wp-content/uploads/2019/03/Children-drawing-PB.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.home-card{
+    background-color: white;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+    border-radius: 15px;
+}
+
+.home-title, 
+.signup-title, 
+.detail-title, 
+.no-results, 
+.no-wishlist {
+    text-align: center;
+}
+
+.home-mid{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mid-card{
+    background-color: #e0f2f1;
+    padding: 10px;
+    border-radius: 15px;
+    margin-right: 30px;
+    box-shadow: 3px 3px 6px #e0e0e0 ;
+    text-align: center;
+}
+
+.home-form{
+    margin-top: 15px;
+}
+
+.home-btn{
+    background-color: #009688;
+    height: 35px;
+    border-radius: 15px;
+    color: white;
+}
+
+.about-app{
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.about-title{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.about, 
+.about-devs{
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+
+.signup-div{
+    background-color: white;
+    border-radius: 15px;
+}
+
+.signup-card, 
+.login-form, 
+.update-item, 
+.item-delete, 
+.class-delete {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.class-list{
+    margin-top: 42px;
+    background-color: white;
+    border-radius: 15px;
+    padding-bottom: 5px;
+}
+
+.list-title{
+    text-align: center;
+    padding: 15px;
+}
+
+.list-btn-div {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 15px;
+    padding-bottom: 40px;
+}
+
+.list-btn{
+    border-radius: 15px;
+}
+
+li{
+    list-style-type: none;
+}
+
+.reg-card{
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.reg-text{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.reg-table label{
+    margin-right: -60px;
+    margin-left: 15px;
+}
+
+.reg-table td{
+    padding-right: 20px;
+}
+
+.reg-btn-div{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.class-detail{
+    background-color: white;
+    border-radius: 15px;
+}
+
+.detail-form p {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.detail-form-btn{
+    margin-left: 15px;
+}
+
+.wish-card{
+    border-radius: 15px
+}
+
+.wish-title{
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.wishlist-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 15px;
+}
+
+.item-card{
+    width: 250px;
+    margin-left: 55px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.item-detail {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.wishlist-img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.item-img{
+    max-width: 500px;
+
+}
+
+main{
+    flex-grow: 1;
+}
+
+footer{
+    padding-top: 0;
+    text-align: right;
+}
+
+@media screen and (max-width: 1350px) {
+    .wishlist-card{
+        /* width: 100%; */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        /* flex-wrap: wrap;
+        justify-content: center; */
+    }
+
+    .item-card {
+        width: 50%;
+        gap: 25px;
+    }
+}
+
+.about-links {
+    width: 100px;
+    display: flex;
+    justify-content: space-around;
+}
