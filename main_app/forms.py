@@ -1,7 +1,10 @@
 from django.forms import ModelForm
 from .models import Classroom, Item
 
-# ========== CLASSROOM Form ==========
+
+# ========================================
+#          CLASSROOM Form
+# ========================================
 class ClassroomForm(ModelForm):
     class Meta:
         model = Classroom
@@ -18,6 +21,10 @@ class ClassroomForm(ModelForm):
             'notes',
         )
 
+
+# ========================================
+#          ITEM Form
+# ========================================
 class ItemForm(ModelForm):
     class Meta:
         model = Item

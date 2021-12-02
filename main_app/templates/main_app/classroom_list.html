@@ -1,32 +1,36 @@
 {% extends 'base.html' %} {% block content %}
-<div class="class-list">
-    {% if user.is_authenticated %}
-        <h3 class="list-title">Classroom List</h3>
-    {% else %}
-        <h3 class="list-title">Search Results</h3>
-    {% endif %}
-    <div class="list-btn-div">
+
+    <div class="class-list">
         {% if user.is_authenticated %}
-            <li><a class="btn teal" href="{% url 'classroom_create' %}">Register a New Classroom</a></li>
-            <li><a class="btn teal" href="{% url 'home' %}">Return Home to Search For Classrooms</a></li>
+            <h3 class="list-title">Classroom List</h3>
         {% else %}
-            <a class="btn teal" href="{% url 'home' %}">Return Home to Search Again</a>
+            <h3 class="list-title">Search Results</h3>
         {% endif %}
-    </div>
-    {% for classroom in object_list %}
-        <a href="{% url 'classroom_detail' classroom.id %}">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title">{{ classroom.school_name }}</span>
-                    <p>School: {{ classroom.school_name }}</p>
-                    <p>Teacher: {{ classroom.teacher_name }}</p>
-                    <p>Grade: {{ classroom.get_grade_display }}</p>
+        <div class="list-btn-div">
+            {% if user.is_authenticated %}
+                <li><a class="btn teal" href="{% url 'classroom_create' %}">Register a New Classroom</a></li>
+                <li><a class="btn teal" href="{% url 'home' %}">Return Home to Search For Classrooms</a></li>
+            {% else %}
+                <a class="btn teal" href="{% url 'home' %}">Return Home to Search Again</a>
+            {% endif %}
+        </div>
+        {% for classroom in object_list %}
+            <a href="{% url 'classroom_detail' classroom.id %}">
+                <div class="card">
+                    <div class="card-content">
+                        <span style="text-transform: capitalize;" class="card-title">{{ classroom.school_name }} </span>
+                        <p style="text-transform: capitalize;">Teacher: {{ classroom.teacher_name }}</p>
+                        <p>Grade: {{ classroom.get_grade_display }}</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-    {% empty %}
-        <h4 class="no-results" style="padding-left: 15px;">No classrooms found matching your search criteria.</h4>
-    {% endfor %}
-</div>
+            </a>
+        {% empty %}
+            {% if user.is_authenticated %}
+                <h4 class="no-results" style="padding-left: 15px;">No classrooms available. Please register a new classroom.</h4>
+            {% else %}
+                <h4 class="no-results" style="padding-left: 15px;">No classrooms found matching your search criteria.</h4>
+            {% endif %}
+        {% endfor %}
+    </div>
 
 {% endblock %}
