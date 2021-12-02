@@ -6,7 +6,7 @@ As a full-stack Django app, supplylab provides a user-friendly interface where d
 Django's extensive authentication and authorization functionality is implemented to provide security across the app, ensuring data integrity and protection for users while persisting data in the PostgresSQL database.
 
 
-# Check out the app **[here!](insert link)**
+# Check out the app **[here!](https://supplylab.herokuapp.com/)**
 
 
 # Technologies Used
@@ -39,7 +39,7 @@ Supplylab is an ever-evolving platform ready to scale alongside our users' needs
 
 
 # Planning & Production
-Interested in our planning process? Checkout our [![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)](https://trello.com/b/NSfVPUuf/seir-project-4) board to see our user stories, ERDs, wireframes, and collaborative planning.
+Interested in our planning process? Checkout our [Pitch Deck](https://docs.google.com/presentation/d/1Aza10GxKUWhhS44D80CSUCSQ4kalQgS817fWzx9PcI0/edit?usp=sharing) for our initial project idea and checkout our [![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)](https://trello.com/b/NSfVPUuf/seir-project-4) board to see our user stories, ERDs, wireframes, and collaborative planning.
 
 
 # Meet the Developers
