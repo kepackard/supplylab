@@ -2,11 +2,11 @@
 
 <div class="class-detail">
     <h3 class="detail-title">{{ classroom.teacher_name.title }}'s {{ classroom.get_grade_display }} Class </h3>
-    <h3 class="detail-title">Item Detail</h3>
+    <h3 class="detail-title"><span class="teal-text">{{ item.name.title }}</span> Details</h3>
     <div class="row">
         <div class="card">
             <div class="item-detail">
-                <h4>{{ item.name }}</h4>
+                <!-- <h4>{{ item.name.title }}</h4> -->
                 <h4>Amount: {{ item.amount }}</h4>
                 <img class="item-img" src="{{ item.thumbnail }}" alt=" {{ item.name }}">
                 {% if item.notes %}
@@ -20,8 +20,12 @@
                         <a class="red-text" href="{% url 'item_delete' item.id %}">Delete</a>
                         <a class="blue-text" href="{% url 'classroom_detail' classroom.id%}">Back to Classroom</a>
                     </div>
+                {% else %}
+                    <div class="card-action">
+                        <input type=button class="btn detail-form-btn" value="Back to Classroom" onClick="javascript:history.go(-1);">
+                    </div>
+                {% endif %}
             </div>        
-            {% endif %}
         </div>
     </div>  
 </div>

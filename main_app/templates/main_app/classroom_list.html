@@ -17,9 +17,8 @@
         <a href="{% url 'classroom_detail' classroom.id %}">
             <div class="card">
                 <div class="card-content">
-                    <span class="card-title">{{ classroom.school_name }}</span>
-                    <p>School: {{ classroom.school_name }}</p>
-                    <p>Teacher: {{ classroom.teacher_name }}</p>
+                    <span class="card-title">{{ classroom.school_name.title }}</span>
+                    <p>Teacher: {{ classroom.teacher_name.title }}</p>
                     <p>Grade: {{ classroom.get_grade_display }}</p>
                 </div>
             </div>

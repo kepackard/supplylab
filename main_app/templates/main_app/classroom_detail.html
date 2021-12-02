@@ -45,6 +45,10 @@
                     <input class="btn detail-form-btn" type="submit" value="Add Item"/>
                 </form>
             </div>
+            {% else %}
+                <div class="card-action">
+                    <input type=button class="btn detail-form-btn" value="Back to Search Results" onClick="javascript:history.go(-1);">
+                </div>
             {% endif %}
         </div>
         <div class="wish-card">
