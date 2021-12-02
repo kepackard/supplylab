@@ -12,13 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-# from dotenv import load_dotenv
-# load_dotenv()   # loads the configs from .env
-# from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent     # changed this!!!! undo if needed
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -26,8 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# for development - uncomment lines below to enable secret key
+# from dotenv import load_dotenv
+# load_dotenv()   # loads the configs from .env
 # SECRET_KEY = str(os.getenv('SECRET_KEY'))   # if using python-dotenv
-# SECRET_KEY = config('SECRET_KEY')         # if not using dotenv
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -125,14 +124,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-# STATIC_URL = '/static/'
-# STATIC_ROOT = BASE_DIR / 'staticfiles'
-# STATIC_URL = '/main_app/static/'
-
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')             # use for production
+# STATIC_URL = '/static/'                                   # use for development
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage',
 
