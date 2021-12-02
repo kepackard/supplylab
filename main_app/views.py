@@ -115,8 +115,6 @@ class ItemDetail(DetailView):
         context['classroom'] = classroom
         return context
         
-
-
 # ----- Update -----
 class ItemUpdate(LoginRequiredMixin, UpdateView):
     model = Item
@@ -129,7 +127,8 @@ class ItemDelete(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         classroom = self.object.classroom
         return reverse('classroom_detail', kwargs={'pk':classroom.id})
-    
+
+
 # ========================================
 #          SEARCH Views
 # ========================================

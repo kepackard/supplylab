@@ -1,16 +1,17 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="class-detail">
-    <h4 class="detail-title">Update Item</h4>
-    <div class="update-item">
-        <form action="" method="POST">
-            {% csrf_token %}
-            <table>
-                {{ form.as_table }}
-            </table>
-            <input type="submit" class="btn blue" value="Update!">
-            <input type="submit" class="btn red" value="Cancel">
-        </form>
+    <div class="class-detail">
+        <h4 class="detail-title">Update Item</h4>
+        <div class="update-item">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <input type="submit" class="btn blue" value="Update!">
+                <input type="submit" class="btn red" value="Cancel">
+            </form>
+        </div>
     </div>
-</div>
+
 {% endblock %}
