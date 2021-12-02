@@ -1,73 +1,71 @@
 {% extends 'base.html' %} {% block content %}
 
-    <div class="class-detail">
-        <h3 class="detail-title">Classroom Details</h3>
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title" style="text-transform: capitalize;">{{ classroom.school_name }}</span>
-                    <p style="text-transform: capitalize;">Teacher: {{ classroom.teacher_name }}</p>
-                    {% if classroom.teacher_email %}
-                        <p>Email: {{ classroom.teacher_email }}</p>
-                    {% else %}
-                        <p>Email: currently unavailable</p>
-                    {% endif %}
-                    <p>Grade: {{ classroom.get_grade_display }}</p>
-                    <p style="text-transform: capitalize;">School: {{ classroom.school_name }}</p>
-                    {% if classroom.school_url%}
-                        <p>Website: {{ classroom.school_url }}</p>
-                    {% else %}
-                        <p>Website: currently unavailable</p>
-                    {% endif %}
-                    <p>State: <span style="text-transform: uppercase;">{{ classroom.state }}</span></p>
-                    <p style="text-transform: capitalize;">District: {{ classroom.district }}</p>
-                    <p style="text-transform: capitalize;">Address: {{ classroom.address }}</p>
-                    <p>Zipcode: {{ classroom.zipcode }}</p>
-                    {% if classroom.notes %}
-                        <p>Notes: {{ classroom.notes }}</p>
-                    {% else %}
-                        <p>Notes: None at this time.</p>
-                    {% endif %}
-                </div>
-                {% if user.is_authenticated and user == classroom.user %}
-                <div class="card-action">
-                    <a class="blue-text" href="{% url 'classroom_update' classroom.id %}">Edit</a>
-                    <a class="red-text" href="{% url 'classroom_delete' classroom.id %}">Delete</a>
-                    <a class="blue-text" href="{% url 'classroom_list' %}">Back to List</a>
-                </div>
-            </div>
-            <div class="col s6">
-                <div class="detail-form">
-                    <h4 class="detail-title" style="padding-left: 15px;">Add to Wishlist</h4>
-                    <form action="{% url 'add_item' classroom.id %}" method="POST">
-                        {% csrf_token %}
-                        {{ item_form.as_p }}
-                        <input class="btn detail-form-btn" type="submit" value="Add Item"/>
-                    </form>
-                </div>
+
+<div class="class-detail">
+    <h3 class="detail-title">Classroom Details</h3>
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title" style="text-transform: capitalize;">{{ classroom.school_name }}</span>
+                <p style="text-transform: capitalize;">Teacher: {{ classroom.teacher_name }}</p>
+                {% if classroom.teacher_email %}
+                    <p>Email: {{ classroom.teacher_email }}</p>
                 {% else %}
-                    <div class="card-action">
-                        <input type=button class="btn detail-form-btn" value="Back to Search Results" onClick="javascript:history.go(-1);">
-                    </div>
+                    <p>Email: currently unavailable</p>
+                {% endif %}
+                <p>Grade: {{ classroom.get_grade_display }}</p>
+                <p style="text-transform: capitalize;">School: {{ classroom.school_name }}</p>
+                {% if classroom.school_url%}
+                    <p>Website: {{ classroom.school_url }}</p>
+                {% else %}
+                    <p>Website: currently unavailable</p>
+                {% endif %}
+                <p>State: <span style="text-transform: uppercase;">{{ classroom.state }}</span></p>
+                <p style="text-transform: capitalize;">District: {{ classroom.district }}</p>
+                <p style="text-transform: capitalize;">Address: {{ classroom.address }}</p>
+                <p>Zipcode: {{ classroom.zipcode }}</p>
+                {% if classroom.notes %}
+                    <p>Notes: {{ classroom.notes }}</p>
+                {% else %}
+                    <p>Notes: None at this time.</p>
                 {% endif %}
             </div>
-            <div class="wish-card">
-                <h3 class="wish-title">Class Wishlist</h3>
-                {% if classroom.item_set.count %}
-                <div class="wishlist-card">
-                {% for item in classroom.item_set.all %}
-                            <div class="item-card">
-                                <div class="item">
-                                    <a href="{% url 'item_detail' item.id %}"><img class="wishlist-img" src="{{item.thumbnail}}" alt="{{item.name}}"/></a>
-                                    <p>Amount needed: {{item.amount}}</p>
-                                </div>
+            {% if user.is_authenticated and user == classroom.user %}
+            <div class="card-action">
+                <a class="blue-text" href="{% url 'classroom_update' classroom.id %}">Edit</a>
+                <a class="red-text" href="{% url 'classroom_delete' classroom.id %}">Delete</a>
+                <a class="blue-text" href="{% url 'classroom_list' %}">Back to List</a>
+            </div>
+        </div>
+        <div class="col s6">
+            <div class="detail-form">
+                <h4 class="detail-title" style="padding-left: 15px;">Add to Wishlist</h4>
+                <form action="{% url 'add_item' classroom.id %}" method="POST">
+                    {% csrf_token %}
+                    {{ item_form.as_p }}
+                    <input class="btn detail-form-btn" type="submit" value="Add Item"/>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+        <div class="wish-card">
+            <h3 class="wish-title">Class Wishlist</h3>
+            {% if classroom.item_set.count %}
+            <div class="wishlist-card">
+            {% for item in classroom.item_set.all %}
+                        <div class="item-card">
+                            <div class="item">
+                                <a href="{% url 'item_detail' item.id %}"><img class="wishlist-img" src="{{item.thumbnail}}" alt="{{item.name}}"/></a>
+                                <p>Amount needed: {{item.amount}}</p>
                             </div>
-                {% endfor %}
-                </div>
-                {% else %}
-                    <h4 class="no-wishlist">No wishlist items. Please add an item.</h4>
-                {% endif %}
+                        </div>
+            {% endfor %}
             </div>
-    </div>
+            {% else %}
+                <h4 class="no-wishlist">No wishlist items. Please add an item.</h4>
+            {% endif %}
+        </div>
+</div>
+
 
 {% endblock %}
 
