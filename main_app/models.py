@@ -18,12 +18,12 @@ class Classroom(models.Model):
     school_name = models.CharField(max_length = 100)
     state = models.CharField(max_length = 2)
     district = models.CharField(max_length = 150)
-    address = models.CharField(max_length = 200)
-    zipcode = models.IntegerField()
+    address = models.CharField(max_length = 200, help_text="Please provide the address where donations should be sent.")
+    zipcode = models.CharField(max_length=12)
     grade = models.CharField(max_length = 1, choices=GRADES, default=GRADES[0][0],)
-    teacher_name = models.CharField(max_length = 100, blank=True)
+    teacher_name = models.CharField(max_length = 100)
     teacher_email = models.EmailField(max_length = 100, blank=True)
-    school_url = models.URLField(blank=True)
+    school_url = models.URLField(blank=True, help_text="Please enter a complete URL including the https://")
     notes = models.TextField(max_length = 250, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -41,7 +41,7 @@ class Classroom(models.Model):
 class Item(models.Model):
     name = models.CharField(max_length = 100)
     amount = models.IntegerField()
-    thumbnail = models.URLField(max_length = 300)
+    thumbnail = models.URLField(max_length = 300, help_text="Please enter a complete URL including the https://")
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
     notes = models.TextField(max_length = 100, blank=True)
 
