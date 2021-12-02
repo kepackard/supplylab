@@ -22,10 +22,11 @@
                     <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;supplylab</a></li>
                 </ul>
                 <ul class="right">
+                    {% if user.is_authenticated %}
+                        <li>Welcome, {{ user.username.capitalize }}!</li>
+                    {% endif %}
                     <li><a href="{% url 'about' %}">About</a></li>
                     {% if user.is_authenticated %}
-                        <!-- todo - move the Welcome {{user}} to a better spot layoutwise -->
-                        <li>Welcome, {{ user.username.capitalize }}!</li>
                         <li><a href="{% url 'classroom_list' %}">See My Classrooms</a></li>
                         <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
