@@ -6,7 +6,7 @@ As a full-stack Django app, supplylab provides a user-friendly interface where d
 Django's extensive authentication and authorization functionality is implemented to provide security across the app, ensuring data integrity and protection for users while persisting data in the PostgresSQL database.
 
 
-# Check out the app **[here!](https://supplylab.herokuapp.com/)**
+# Check out the app **[here!](http://google.com)**
 
 
 # Technologies Used
