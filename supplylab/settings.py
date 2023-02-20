@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # for development - uncomment lines below to enable secret key
-# from dotenv import load_dotenv
-# load_dotenv()   # loads the configs from .env
-# SECRET_KEY = str(os.getenv('SECRET_KEY'))   # if using python-dotenv
+from dotenv import load_dotenv
+load_dotenv()   # loads the configs from .env
+SECRET_KEY = str(os.getenv('SECRET_KEY'))   # if using python-dotenv
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
